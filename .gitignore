@@ -1,4 +1,4 @@
-".env" 
-"chroma_StudyBuddyAU_Vectorstore/" 
-"__pycache__/" 
-"contents.docx" 
+.env
+chroma_StudyBuddyAU_Vectorstore/
+__pycache__/
+contents.docx
