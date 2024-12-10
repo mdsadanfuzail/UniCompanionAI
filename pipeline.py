@@ -52,9 +52,8 @@ def invoke_chain(retriever,asking_question):
          |chat_model
          |StrOutputParser())
     
-    print("Question:")
-    print(asking_question)
-    print("\nChatbot Response:\n")
+    
+    print("\nChatbot Response:")
     
     for chunk in chain.stream(question):
         print(chunk, end="")

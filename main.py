@@ -29,7 +29,8 @@ def main():
     initialize_chat_model(cohere_api_key)
 
     #query
-    question = "what are the textbooks in engineering chemistry ?"
+    #question = "what are the textbooks in engineering chemistry ?"
+    question = input("\nEnter Query:\n")
     invoke_chain(retriever, question)
 
 if __name__ == "__main__":
