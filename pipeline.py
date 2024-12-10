@@ -4,7 +4,7 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_cohere import ChatCohere
 from langchain_cohere import ChatCohere
 
-# Global variable to store the chat model instance
+#Global variable to store the chat model instance
 chat_model = None
 
 def initialize_chat_model(cohere_api_key):
@@ -23,12 +23,8 @@ def initialize_chat_model(cohere_api_key):
 def create_rag_pipeline(vector_store, cohere_api_key):
     print("Setting up the RAG retriever...")
 
-    # Configure retriever from the vector store (Chroma in this case)
     retriever = vector_store.as_retriever(search_type="mmr", search_kwargs={'k':1, 'lambda_mult':0.7})
 
-    # Set up the ChatCohere model with the necessary API key
-    
-    
     print("RAG retriever SUCCESS...!!")
     return retriever
 

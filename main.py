@@ -5,7 +5,6 @@ from loaders import initial_load_and_split
 from vectorstore import get_vectorstore, create_vector_store
 from pipeline import create_rag_pipeline, invoke_chain, initialize_chat_model
 
-# Main pipeline
 def main():
 
     dotenv_path = find_dotenv()
