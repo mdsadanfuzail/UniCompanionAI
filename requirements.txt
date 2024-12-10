@@ -1,0 +1,8 @@
+
+langchain-core==0.0.30
+langchain-cohere==0.0.1
+langchain-chroma==0.0.1
+langchain-community==0.0.1
+cohere==4.0.0
+docx2txt==0.8
+python-dotenv==1.0.0
