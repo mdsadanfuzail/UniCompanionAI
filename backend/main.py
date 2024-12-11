@@ -4,7 +4,6 @@ from dotenv import find_dotenv, load_dotenv
 from loaders import initial_load_and_split
 from vectorstore import create_vector_store
 
-
 import uvicorn
 
 def main():
