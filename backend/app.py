@@ -11,7 +11,7 @@ dotenv_path = find_dotenv()
 load_dotenv(dotenv_path)
 cohere_api_key = os.getenv("API_KEY")
 
-vector_store = get_vectorstore(cohere_api_key)  # Retrieve the vector store, initialized in main.py
+vector_store = get_vectorstore(cohere_api_key)
 retriever = get_retriever(vector_store)
 initialize_chat_model(cohere_api_key)
 
@@ -25,6 +25,5 @@ def get_answer(question: str):
     """
     Endpoint to get an answer to a Query
     """
-    # Invoke the pipeline to get an answer
     response = invoke_chain(retriever, question)
     return {"answer": response}

@@ -59,31 +59,7 @@ To run UniCompanionAI locally, follow these steps:
    uvicorn main:app --reload
    ```
 
-2. The API will be available at `http://127.0.0.1:8000`.
-
-### API Endpoints
-
-- **`GET /`**: Health check endpoint to verify the API is running.
-- **`POST /query`**: Endpoint to send a query to the chatbot and receive a response.
-  - Example payload:
-    ```json
-    {
-      "query": "What are the rules for examination?"
-    }
-    ```
-
-  - Example response:
-    ```json
-    {
-      "response": "The rules for examinations are as follows..."
-    }
-    ```
-
-### Swagger Documentation
-
-FastAPI automatically generates interactive API documentation, accessible at:
-- Swagger UI: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-- Redoc: [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
+2. The API will be available at `http://127.0.0.1:8006`.
 
 ## Project Structure
 

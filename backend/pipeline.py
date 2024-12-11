@@ -2,7 +2,6 @@ from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 from langchain_cohere import ChatCohere
-from langchain_cohere import ChatCohere
 
 #Global variable to store the chat model instance
 chat_model = None
