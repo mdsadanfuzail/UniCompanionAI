@@ -55,5 +55,7 @@ def invoke_chain(retriever,asking_question):
     
     print("\nChatbot Response:")
     
-    for chunk in chain.stream(question):
-        print(chunk, end="")
+    #for chunk in chain.stream(question):
+    #   print(chunk, end="")
+    
+    return chain.invoke(question)

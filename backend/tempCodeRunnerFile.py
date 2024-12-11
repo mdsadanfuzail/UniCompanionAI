@@ -1,0 +1,1 @@
+initialize_chat_model(cohere_api_key)

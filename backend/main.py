@@ -1,9 +1,12 @@
 import os
 from dotenv import find_dotenv, load_dotenv
 from langchain_cohere import ChatCohere
+
 from loaders import initial_load_and_split
 from vectorstore import get_vectorstore, create_vector_store
 from pipeline import create_rag_pipeline, invoke_chain, initialize_chat_model
+
+import uvicorn
 
 def main():
 
@@ -21,17 +24,8 @@ def main():
 
     else:
         print("vectorstore exists, loading vectorestore")
-
-    vector_store = get_vectorstore(cohere_api_key)
-
-    retriever = create_rag_pipeline(vector_store, cohere_api_key)
-
-    initialize_chat_model(cohere_api_key)
-
-    #query
-    #question = "what are the textbooks in engineering chemistry ?"
-    question = input("\nEnter Query:\n")
-    invoke_chain(retriever, question)
+    
+    uvicorn.run("app:app", host="127.0.0.1", port=8006, reload=True)
 
 if __name__ == "__main__":
     main()
