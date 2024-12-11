@@ -1,4 +1,3 @@
-
 # UniCompanionAI
 
 UniCompanionAI is a chatbot application designed to assist students of a specific university in understanding and navigating their syllabus, rules, and regulations. The chatbot utilizes advanced AI models to simplify complex university-related documents and provide personalized answers to student queries. This project aims to make students' lives easier by providing quick access to critical university information.
@@ -9,12 +8,14 @@ UniCompanionAI is a chatbot application designed to assist students of a specifi
 - **Rules & Regulations**: Provides easy-to-understand explanations of university rules and regulations.
 - **Personalized Answers**: Uses advanced AI models to give accurate, context-based responses to student questions.
 - **Text-based Interface**: A user-friendly text-based interface for easy communication with the chatbot.
+- **API Integration**: Exposes endpoints for interacting with the chatbot via FastAPI.
 
 ## Tech Stack
 
 - **Programming Language**: Python
 - **Libraries/Frameworks**:
-  - [LangChain](https://www.langchain.com/) for building the pipeline
+  - [FastAPI](https://fastapi.tiangolo.com/) for building the backend API
+  - [LangChain](https://www.langchain.com/) for building the RAG pipeline
   - [Cohere API](https://cohere.ai/) for chatbot model integration
   - [Chroma](https://www.trychroma.com/) for vector storage and retrieval
   - [Docx2txt](https://github.com/Alir3z4/docx2txt) for parsing DOCX files
@@ -47,30 +48,59 @@ To run UniCompanionAI locally, follow these steps:
      API_KEY=your_cohere_api_key_here
      VECTORSTORE_EXISTS=false
      ```
-   - Once vectorstore is created make VECTORSTORE_EXISTS=true
-
+   - Once the vectorstore is created, set `VECTORSTORE_EXISTS=true`.
 
 ## Usage
 
-Once the environment is set up, you can run the chatbot application:
+### Running the Application
 
-1. Run the main application:
+1. Start the FastAPI application:
    ```bash
-   python main.py
+   uvicorn main:app --reload
    ```
 
-2. The application will prompt you to ask questions about your university's syllabus, rules, and regulations. You can interact with the chatbot by typing questions.
+2. The API will be available at `http://127.0.0.1:8000`.
+
+### API Endpoints
+
+- **`GET /`**: Health check endpoint to verify the API is running.
+- **`POST /query`**: Endpoint to send a query to the chatbot and receive a response.
+  - Example payload:
+    ```json
+    {
+      "query": "What are the rules for examination?"
+    }
+    ```
+
+  - Example response:
+    ```json
+    {
+      "response": "The rules for examinations are as follows..."
+    }
+    ```
+
+### Swagger Documentation
+
+FastAPI automatically generates interactive API documentation, accessible at:
+- Swagger UI: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+- Redoc: [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
 
 ## Project Structure
 
-- `main.py`: The main entry point for running the chatbot application.
-- `pipeline.py`: Contains the RAG pipeline setup, including the integration with Cohere API and document retrieval.
-- `loaders.py`: Handles loading and processing of university-specific documents (e.g., syllabus, regulations) in DOCX format.
-- `vectorstore.py`: Manages the Chroma vector store for efficient document retrieval.
-- `requirements.txt`: Lists the Python dependencies for the project.
-- `.env`: Contains environment variables like API keys (ensure this file is not publicly accessible).
-- `README.md`: This file.
-
+```
+UniCompanionAI/
+|
+├── backend/                 # Contains the backend folder
+│   ├── app.py               # Contains FastAPI application instance and API routes
+│   ├── main.py              # Entry point for running the FastAPI application
+│   ├── pipeline.py          # Setup for the RAG pipeline (Cohere API and document retrieval)
+│   ├── loaders.py           # Handles loading and processing of university-specific documents
+│   ├── vectorstore.py       # Manages Chroma vector store for document retrieval and storage
+│
+├── requirements.txt         # Python dependencies
+├── .env                     # Environment variables (e.g., Cohere API Key, VECTORSTORE_EXISTS)
+├── README.md                # Project documentation
+```
 
 ## License
 
@@ -80,3 +110,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - Thanks to Cohere for providing the powerful LLM used in this project.
 - Thanks to LangChain for helping to streamline the creation of the RAG pipeline.
+- Thanks to FastAPI for enabling a robust and user-friendly backend for this application.
