@@ -1,6 +1,5 @@
 import os
 from dotenv import find_dotenv, load_dotenv
-from langchain_cohere import ChatCohere
 
 from loaders import initial_load_and_split
 from vectorstore import get_vectorstore, create_vector_store
