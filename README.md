@@ -1,7 +1,7 @@
 
-# StudyBuddyAU
+# UniCompanionAI
 
-StudyBuddyAU is a chatbot application designed to assist students of a specific university in understanding and navigating their syllabus, rules, and regulations. The chatbot utilizes advanced AI models to simplify complex university-related documents and provide personalized answers to student queries. This project aims to make students' lives easier by providing quick access to critical university information.
+UniCompanionAI is a chatbot application designed to assist students of a specific university in understanding and navigating their syllabus, rules, and regulations. The chatbot utilizes advanced AI models to simplify complex university-related documents and provide personalized answers to student queries. This project aims to make students' lives easier by providing quick access to critical university information.
 
 ## Features
 
@@ -15,25 +15,24 @@ StudyBuddyAU is a chatbot application designed to assist students of a specific 
 - **Programming Language**: Python
 - **Libraries/Frameworks**:
   - [LangChain](https://www.langchain.com/) for building the pipeline
-  - [Cohere API](https://cohere.ai/) for Natural Language Processing (NLP)
+  - [Cohere API](https://cohere.ai/) for chatbot model integration
   - [Chroma](https://www.trychroma.com/) for vector storage and retrieval
-  - [OpenAI](https://openai.com/) for chatbot model integration
   - [Docx2txt](https://github.com/Alir3z4/docx2txt) for parsing DOCX files
 - **Database**: Chroma (Vector store for document retrieval)
 - **Hosting**: GitHub (for version control)
 
 ## Installation
 
-To run StudyBuddyAU locally, follow these steps:
+To run UniCompanionAI locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/StudyBuddyAU.git
+   git clone https://github.com/your-username/UniCompanionAI.git
    ```
 
 2. Navigate to the project folder:
    ```bash
-   cd StudyBuddyAU
+   cd UniCompanionAI
    ```
 
 3. Install the necessary dependencies:
