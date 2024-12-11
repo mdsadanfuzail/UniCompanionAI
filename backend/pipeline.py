@@ -20,7 +20,7 @@ def initialize_chat_model(cohere_api_key):
     else:
         print("ChatCohere model already initialized.")
 
-def create_rag_pipeline(vector_store, cohere_api_key):
+def get_retriever(vector_store):
     print("Setting up the RAG retriever...")
 
     retriever = vector_store.as_retriever(search_type="mmr", search_kwargs={'k':1, 'lambda_mult':0.7})

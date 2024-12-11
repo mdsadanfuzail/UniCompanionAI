@@ -2,7 +2,7 @@ import os
 from dotenv import find_dotenv, load_dotenv
 
 from fastapi import FastAPI
-from pipeline import invoke_chain, create_rag_pipeline, initialize_chat_model 
+from pipeline import invoke_chain, get_retriever, initialize_chat_model 
 from vectorstore import get_vectorstore  
 
 app = FastAPI()
@@ -12,7 +12,7 @@ load_dotenv(dotenv_path)
 cohere_api_key = os.getenv("API_KEY")
 
 vector_store = get_vectorstore(cohere_api_key)  # Retrieve the vector store, initialized in main.py
-retriever = create_rag_pipeline(vector_store, cohere_api_key)
+retriever = get_retriever(vector_store)
 initialize_chat_model(cohere_api_key)
 
 
