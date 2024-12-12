@@ -7,7 +7,6 @@ from langchain_cohere import ChatCohere
 chat_model = None
 
 def initialize_chat_model(cohere_api_key):
-    """Return a singleton instance of the ChatCohere model."""
     global chat_model
     if chat_model is None:
         chat_model = ChatCohere(

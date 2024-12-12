@@ -16,7 +16,7 @@ def main():
 
     if REBUILD_VECTORSTORE == True:
         print("vectorstore does not exist, creating vectorestore")
-        docx_file = r"C:\Users\91638\Desktop\StudyBuddyAU\contents.docx"  # List of DOCX files
+        docx_file = r"C:\Users\91638\Desktop\UniCompanionAI\contents.docx"  # List of DOCX files
         documents = initial_load_and_split(docx_file)
         create_vector_store(documents, cohere_api_key)  #initial vectorstore created now only need to access it
 
