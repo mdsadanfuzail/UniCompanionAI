@@ -66,7 +66,7 @@ To run UniCompanionAI locally, follow these steps:
 ```
 UniCompanionAI/
 |
-├── backend/                 # Contains the backend folder
+├── backend/                 # Contains the backend code
 │   ├── app.py               # Contains FastAPI application instance and API routes
 │   ├── main.py              # Entry point for running the FastAPI application
 │   ├── pipeline.py          # Setup for the RAG pipeline (Cohere API and document retrieval)
