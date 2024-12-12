@@ -45,7 +45,7 @@ To run UniCompanionAI locally, follow these steps:
    - Create a `.env` file in the root directory of the project.
    - Add the following content:
      ```
-     API_KEY=your_cohere_api_key_here
+     API_KEY="your_cohere_api_key_here"
      VECTORSTORE_EXISTS=false
      ```
    - Once the vectorstore is created, set `VECTORSTORE_EXISTS=true`.
