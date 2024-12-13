@@ -26,7 +26,7 @@ def get_retriever(vector_store):
     print("RAG retriever SUCCESS...!!")
     return retriever
 
-def invoke_chain(retriever,asking_question):
+def invoke_chain(retriever,question):
 
     global chat_model
     print("\nEntering Pipeline\n")
@@ -41,8 +41,6 @@ def invoke_chain(retriever,asking_question):
     '''
         
     prompt_template = PromptTemplate.from_template(template = TEMPLATE)
-
-    question = asking_question
 
     chain = ({'context':retriever,
          'question':RunnablePassthrough()} 
