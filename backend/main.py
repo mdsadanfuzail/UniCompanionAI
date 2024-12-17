@@ -9,8 +9,8 @@ import uvicorn
 
 def main():
     # Dynamically resolve the base directory
-    base_dir = Path(__file__).parent.resolve()
-    
+    base_dir = Path(__file__).resolve().parent.parent
+
     dotenv_path = find_dotenv()
     load_dotenv(dotenv_path)
     cohere_api_key = os.getenv("API_KEY")
@@ -21,7 +21,7 @@ def main():
         print("vectorstore does not exist, creating vectorstore")
         
         # Use base directory to construct the path
-        docx_file = base_dir / "assets" / "contents.docx"
+        docx_file = base_dir / "dataset" / "contents.docx"
         print(f"Resolved file path: {docx_file}")
 
         if not docx_file.exists():

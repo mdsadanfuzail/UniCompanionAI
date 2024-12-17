@@ -1,4 +1,4 @@
 .env
-chroma_UniCompanionAI_Vectorstore/
+dataset/chroma_UniCompanionAI_Vectorstore/
 __pycache__/
-backend/assets/contents.docx
+dataset/contents.docx
