@@ -8,7 +8,6 @@ from vectorstore import create_vector_store
 import uvicorn
 
 def main():
-    # Dynamically resolve the base directory
     base_dir = Path(__file__).resolve().parent.parent
 
     dotenv_path = find_dotenv()
