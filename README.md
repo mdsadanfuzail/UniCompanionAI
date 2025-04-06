@@ -14,11 +14,11 @@ UniCompanionAI is a chatbot application designed to assist students of a specifi
 
 - **Programming Language**: Python
 - **Libraries/Frameworks**:
-  - [FastAPI](https://fastapi.tiangolo.com/) for building the backend API
   - [LangChain](https://www.langchain.com/) for building the RAG pipeline
   - [Cohere API](https://cohere.ai/) for chatbot model integration
   - [Chroma](https://www.trychroma.com/) for vector storage and retrieval
-  - [Docx2txt](https://github.com/Alir3z4/docx2txt) for parsing DOCX files
+  - [Gradio](https://www.gradio.app/) for creating a web interface to interact with the chatbot
+
 - **Database**: Chroma (Vector store for document retrieval)
 - **Hosting**: GitHub (for version control)
 
@@ -45,21 +45,16 @@ To run UniCompanionAI locally, follow these steps:
    - Create a `.env` file in the root directory of the project.
    - Add the following content:
      ```
-     API_KEY="your_cohere_api_key_here"
-     VECTORSTORE_EXISTS=false
+     COHERE_API_KEY="your_cohere_api_key_here"
      ```
-   - Once the vectorstore is created, set `VECTORSTORE_EXISTS=true`.
 
 ## Usage
 
 ### Running the Application
 
-1. Start the FastAPI application:
-   ```bash
-   uvicorn main:app --reload
-   ```
+1. Run the Chatbot.py
 
-2. The API will be available at `http://127.0.0.1:8006`.
+2. Use the Gradio frontent to interact with chatbot.
 
 ## Project Structure
 
@@ -67,11 +62,8 @@ To run UniCompanionAI locally, follow these steps:
 UniCompanionAI/
 |
 ├── backend/                 # Contains the backend code
-│   ├── app.py               # Contains FastAPI application instance and API routes
-│   ├── main.py              # Entry point for running the FastAPI application
-│   ├── pipeline.py          # Setup for the RAG pipeline (Cohere API and document retrieval)
-│   ├── loaders.py           # Handles loading and processing of university-specific documents
-│   ├── vectorstore.py       # Manages Chroma vector store for document retrieval and storage
+│   ├── Ingestion.py         # Contains the data ingestion using RAG
+│   ├── Chatbot.py           # Main chatbot application
 │
 ├── requirements.txt         # Python dependencies
 ├── .env                     # Environment variables (e.g., Cohere API Key, VECTORSTORE_EXISTS)
@@ -86,4 +78,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - Thanks to Cohere for providing the powerful LLM used in this project.
 - Thanks to LangChain for helping to streamline the creation of the RAG pipeline.
-- Thanks to FastAPI for enabling a robust and user-friendly backend for this application.
+- Thanks to Gradio for providing an intuitive and interactive UI for seamless user-chatbot communication.
