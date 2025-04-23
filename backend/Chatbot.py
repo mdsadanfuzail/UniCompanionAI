@@ -7,6 +7,7 @@ from langchain_community.llms import HuggingFaceHub
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
+from langchain.chains import ConversationalRetrievalChain, RetrievalQA
 
 import gradio as gr
 import os
@@ -57,20 +58,41 @@ def response(message, _):
     Question: {question}
     '''
         
-    prompt_template = PromptTemplate.from_template(template = TEMPLATE)
+    '''prompt_template = PromptTemplate.from_template(template = TEMPLATE)
 
     chain = ({'context':retriever,
          'question':RunnablePassthrough()} 
          | prompt_template  
          |llm
          |StrOutputParser())
-    
+    '''
     #return chain.invoke(message)
+
+    # Define prompt template
+    template = """
+        You are a helpful university assistant chatbot. Answer the following question based only on the provided context.
+
+        Context: {context}
+        Question: {question}
+        Answer:
+        """
+
+    prompt = PromptTemplate(template=template, input_variables=["context", "question"])
+        
+    chain = RetrievalQA.from_chain_type(
+        llm, retriever=vector_store.as_retriever(), chain_type_kwargs={"prompt": prompt}
+    )
+
+    #output = chain.invoke(message)
+    #output = chain.stream(message)
+    #print(output)
+
+    #return output['result']
 
     partial_message = ""
 
     for res in chain.stream(message):
-        partial_message += res
+        partial_message += res['result']
         yield partial_message
     
 # initiate the Gradio app
