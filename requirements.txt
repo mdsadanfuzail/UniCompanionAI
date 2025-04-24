@@ -8,3 +8,5 @@ huggingface_hub
 gradio
 python-dotenv
 pypdf
+llama-parse 
+nest_asyncio

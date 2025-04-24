@@ -4,14 +4,13 @@ from langchain_openai.embeddings import OpenAIEmbeddings
 from langchain_cohere.embeddings import CohereEmbeddings
 from langchain_community.document_loaders import DirectoryLoader
 from langchain_community.document_loaders import UnstructuredMarkdownLoader
-from langchain.document_loaders import TextLoader
+from langchain_community.document_loaders import TextLoader
 from langchain_chroma import Chroma
+from langchain_community.vectorstores import FAISS
 from uuid import uuid4
 import os
 from dotenv import find_dotenv, load_dotenv
 from llama_parse import LlamaParse
-
-
 import nest_asyncio
 nest_asyncio.apply()
 
@@ -24,8 +23,8 @@ openai_api_key = os.getenv("OPENAI_API_KEY")
 # Congfig
 DATA_PATH = r"C:\Users\91638\Desktop\UniCompanionAI\data"
 CHROMA_PATH = r"C:\Users\91638\Desktop\UniCompanionAI\chromadb"
+FAISS_PATH = r"C:\Users\91638\Desktop\UniCompanionAI\faiss_index"
 
-#embeddings_model = OpenAIEmbeddings(model="text-embedding-3-large")
 embeddings_model = CohereEmbeddings(model="embed-english-light-v3.0", cohere_api_key=cohere_api_key)
 
 def ParseData():
@@ -35,6 +34,11 @@ def ParseData():
     
     parser = LlamaParse(api_key=llamaparse_api_key, result_type="markdown", parsing_instruction=parsingInstruction)
     llama_parse_documents = parser.load_data(r"C:\Users\91638\Desktop\UniCompanionAI\data\UG R 2021.pdf")
+
+    with open(r'C:\Users\91638\Desktop\UniCompanionAI\data\output.md', 'a', encoding='utf-8', errors='ignore') as f:
+        for doc in llama_parse_documents:
+            f.write(doc.text + '\n')
+
     parsed_data = llama_parse_documents
 
     return parsed_data
@@ -46,18 +50,10 @@ def makeVectorStore():
         embedding_function=embeddings_model,
         persist_directory=CHROMA_PATH
     )
-
-    #llama_parse_documents = ParseData()
-    #print(llama_parse_documents[1].text[:100])
-    
-    #with open(r'C:\Users\91638\Desktop\UniCompanionAI\data\output.md', 'a', encoding='utf-8', errors='ignore') as f:  # Open the file in append mode ('a')
-    #    for doc in llama_parse_documents:
-    #        f.write(doc.text + '\n')
-
+     
     #loader = DirectoryLoader(r'C:\Users\91638\Desktop\UniCompanionAI\data', glob="**/*.md")
     #loader = UnstructuredMarkdownLoader(r"C:\Users\91638\Desktop\UniCompanionAI\data\output.md", encoding="latin-1")
     loader = TextLoader(r"C:/Users/91638/Desktop/UniCompanionAI/data/output.md", encoding="utf-8")
-
 
     raw = loader.load()
 
@@ -76,4 +72,5 @@ def makeVectorStore():
 
     print("VectorStore created successfully")
 
+#ParseData()
 makeVectorStore()
