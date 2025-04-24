@@ -61,10 +61,9 @@ To run UniCompanionAI locally, follow these steps:
 ```
 UniCompanionAI/
 |
-├── backend/                 # Contains the backend code
-│   ├── Ingestion.py         # Contains the data ingestion using RAG
-│   ├── Chatbot.py           # Main chatbot application
-│
+├── chromadb                 # Contains the backend code
+├── Ingestion.py             # Contains the data ingestion using RAG
+├── app.py                   # Main chatbot application
 ├── requirements.txt         # Python dependencies
 ├── .env                     # Environment variables (e.g., Cohere API Key, VECTORSTORE_EXISTS)
 ├── README.md                # Project documentation
