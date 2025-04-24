@@ -8,7 +8,6 @@ UniCompanionAI is a chatbot application designed to assist students of a specifi
 - **Rules & Regulations**: Provides easy-to-understand explanations of university rules and regulations.
 - **Personalized Answers**: Uses advanced AI models to give accurate, context-based responses to student questions.
 - **Text-based Interface**: A user-friendly text-based interface for easy communication with the chatbot.
-- **API Integration**: Exposes endpoints for interacting with the chatbot via FastAPI.
 
 ## Tech Stack
 
